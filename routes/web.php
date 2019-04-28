@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/', 'LabController@index');
+Route::get('/test/{title?}', 'LabController@test');
 
 Route::get('/debug', function () {
 
