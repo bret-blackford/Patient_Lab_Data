@@ -17,9 +17,13 @@ class LabController extends Controller {
         if( !$pt ){
             dump('no ID submitted ');
         }else {
-            dump( $pt );
+            dump( 'pt = [' . $pt . ']' );
+            dump( $pt[0]->last_name );
+            $patientX = Patient::find($pt);
+            dump( 'patientX : ' . $patientX );
+            return view('change')->with(['patientY'=>$patientX]);
         }
-        return view('change')->with(['patientX'=>$pt]);
+        return "ERROR in LabController.change()";
     }
 
     public function test($title = null) {

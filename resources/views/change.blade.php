@@ -9,7 +9,8 @@
 
     <body> 
         <h2>Bret CHANGE View</h2>
-        <p>patient: {{ $patientX->last_name }}</p>
+        <p>patient: {{ $patientY }}</p>
+        <p>last name: {{ $patientY->last_name }}</p>
     </body>
 
     <footer> &copy; {{ date('Y') }} </footer>
