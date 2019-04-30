@@ -11,8 +11,15 @@ class LabController extends Controller {
         return view('view');
     }
     
-    public function change() {
-        return view('change');
+    public function change($pt = null) {
+
+        dump( 'now in LabController.change()');
+        if( !$pt ){
+            dump('no ID submitted ');
+        }else {
+            dump( $pt );
+        }
+        return view('change')->with(['patientX'=>$pt]);
     }
 
     public function test($title = null) {
