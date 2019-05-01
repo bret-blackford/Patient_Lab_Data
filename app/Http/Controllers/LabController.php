@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Patient;
+use App\Labs;
 
 class LabController extends Controller {
 
@@ -11,17 +12,18 @@ class LabController extends Controller {
         return view('view');
     }
     
-    public function change($pt = null) {
+    public function change($pt_id = null) {
 
         dump( 'now in LabController.change()');
-        if( !$pt ){
+        if( !$pt_id ){
             dump('no ID submitted ');
         }else {
-            dump( 'pt = [' . $pt . ']' );
-            dump( $pt[0]->last_name );
-            $patientX = Patient::find($pt);
-            dump( 'patientX : ' . $patientX );
-            return view('change')->with(['patientY'=>$patientX]);
+            dump( 'pt_id = [' . $pt_id . ']' );
+            $ptLabs = Labs::find($pt_id);
+            $ptInfo = Patient::find($pt_id);
+            dump( 'ptLabs = [' . $ptLabs . ']' );
+            dump( 'ptInfo = [' . $ptInfo . ']' );
+            return view('change')->with(['labs'=>$ptLabs, 'ptInfo'=>$ptInfo]);
         }
         return "ERROR in LabController.change()";
     }

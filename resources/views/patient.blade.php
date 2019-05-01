@@ -22,7 +22,7 @@
             @foreach($patients as $patient)
 
             <tr>
-                <td><a href="../change/{{$patient}}"> {{$patient->id}}</a></td>
+                <td><a href="../change/{{$patient->id}}"> {{$patient->id}}</a></td>
                 <td>{{$patient->last_name}}</td>
                 <td>{{$patient->first_name}}</td>
                 <td>{{$patient->birthdate}}</td>
