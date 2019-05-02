@@ -1,18 +1,12 @@
+@extends('layouts.master')
 
-<!doctype html>
+@section('content')
 
-<html>
-
-    <head>
-        <meta charset="utf-8">
-        <link href='/css/labs.css' type='text/css' rel='stylesheet'>
-        <title> Patient List </title>
-    </head>
-
-    <body> 
+<div class='view'>
         <h2> Patient List </h2>
-        <p>Click on the ID below to get lab results data</p>
+        <p>Click on the ID below to get lab results data, or click button to add a new patient</p>
 
+        <button class="new_pt" onclick="window.location.href = '../newpatient';">Add Patient</button>
         <table class="patients">
             <tr>
                 <th>ID</th>
@@ -33,9 +27,5 @@
             @endforeach
         </table>
 
-    </body>
-
-    <footer> &copy; {{ date('Y') }} </footer>
-
-</html>
+</div>
 

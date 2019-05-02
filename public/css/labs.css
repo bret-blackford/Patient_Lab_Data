@@ -16,7 +16,10 @@ fieldset {
     margin-top: 15px;
 }
 
-
+.view {
+    margin-top: 3em;
+    padding-top: 10px;
+}
 
 #gender-block, #height-block, #weight-block {
     margin-top: .25em;
@@ -43,6 +46,16 @@ form #alerts li.alert-danger {
     margin-top: 1em;
     background-color: red;
     padding: .5em;
+}
+
+.alert {
+    background-color: yellow;
+    width: 100%;
+    position: fixed;
+    top:0;
+    padding: 5px;
+    font-weight: bold;
+    text-align: center;
 }
 
 th {

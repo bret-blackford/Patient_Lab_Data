@@ -40,22 +40,22 @@ class LabController extends Controller {
                     'patient' => $pt
         ]);
     }
-    
+
     //http://foolabs/checklabs
-    public function checklabs(Request $request){
+    public function checklabs(Request $request) {
         $pt_id = $request->input('pt_id');
         dump('pt_id [' . $pt_id . ']');
         $lab = Labs::find($request->input('lab_id'));
-        
+
         $lab->a1c = $request->input('a1c');
         $lab->glucose = $request->input('glucose');
         $lab->ldl = $request->input('ldl');
         $lab->hdl = $request->input('hdl');
         $lab->triglicerides = $request->input('triglicerides');
-        
+
         $lab->save();
-        return redirect('/change/'.$pt_id)->with([
-            'id' => $pt_id
+        return redirect('/change/' . $pt_id)->with([
+                    'id' => $pt_id
         ]);
     }
 
@@ -74,6 +74,37 @@ class LabController extends Controller {
 
         return view('patient')->with([
                     'patients' => $results
+        ]);
+    }
+    
+       public function chex(Request $request) {
+        dump( ' i am here in LabController::chex()');
+        dump( $request->all() );
+
+        $request->validate([
+            'last_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'first_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'dob' => 'required',
+            'gender' => 'required',
+        ]);
+
+
+        $last_name = $request->input('last_name', null);
+        $first_name = $request->input('first_name', null);
+        $dob = $request->input('dob', null);
+        $gender = $request->input('gender', null);
+ 
+        $patient = new Patient;
+        $patient->last_name = $request->input('last_name');
+        $patient->first_name = $request->input('first_name');
+        $patient->bithdate = $request->input('dob');
+        $patient->gender = $request->input('gender');
+        
+        dump($patient);
+        $patient->save();
+
+        return redirect('/get')->with([
+            'alert'=>'New patient added'
         ]);
     }
 

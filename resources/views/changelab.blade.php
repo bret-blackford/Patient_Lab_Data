@@ -1,13 +1,8 @@
+@extends('layouts.master')
 
-<!doctype html>
+@section('content')
 
-<html>    
-    <head>
-        <meta charset="utf-8">
-        <link href='/css/labs.css' type='text/css' rel='stylesheet'>
-        <title>CHANGE</title>
-    </head>
-
+<div class='view'>
     <h1>Change Labs</h1>
     <h2>Patient: {{$patient->last_name}}, {{$patient->first_name}}</h2>
 
@@ -30,24 +25,12 @@
             <input type='number' name='triglicerides' step="any" min="0" max="999" value='{{ $lab_data->triglicerides }}'>
             <label class='line'>Triglicerides</label></br>
 
-            <div id='gender-block'>
-                Gender:
-                <input type="radio" name='gender' value='Male' {{ (old('gender') == 'Male') ? 'checked' : '' }}>
-                <label>male</label>
-                <input type="radio" name='gender' value='Female' {{ (old('gender') == 'Female') ? 'checked' : '' }}>
-                <label>female</label>
-            </div>
-
             <input type="hidden" value="{{$lab_data->id}}" name="lab_id" />
             <input type="hidden" value="{{$patient->id}}" name="pt_id" />
-
 
         </fieldset>
         <input type="submit" value='update' class='btn'>
     </form>
-</body>
-
-<footer> &copy; {{ date('Y') }} </footer>
-
-</html>
+</div>
+@endsection
 
