@@ -8,10 +8,12 @@ use App\Labs;
 
 class LabController extends Controller {
 
+    //http://foolabs/
     public function index() {
         return view('welcome');
     }
 
+    //http://foolabs//change/{id?}
     public function change($pt_id = null) {
         //dump('now in LabController.change()');
         if (!$pt_id) {
@@ -25,10 +27,7 @@ class LabController extends Controller {
         return "ERROR in LabController.change()";
     }
 
-    public function show($title = null) {
-        return view('show')->with(['title' => $title]);
-    }
-
+    //http://foolabs/changelab/{id?}'
     public function changelab($id = null) {
         if (!$id) {
             dump('NO ID PASSED IN');
@@ -42,10 +41,25 @@ class LabController extends Controller {
         ]);
     }
     
+    //http://foolabs/checklabs
     public function checklabs(Request $request){
-        dump('in LabController.checklab()');
+        $pt_id = $request->input('pt_id');
+        dump('pt_id [' . $pt_id . ']');
+        $lab = Labs::find($request->input('lab_id'));
+        
+        $lab->a1c = $request->input('a1c');
+        $lab->glucose = $request->input('glucose');
+        $lab->ldl = $request->input('ldl');
+        $lab->hdl = $request->input('hdl');
+        $lab->triglicerides = $request->input('triglicerides');
+        
+        $lab->save();
+        return redirect('/change/'.$pt_id)->with([
+            'id' => $pt_id
+        ]);
     }
 
+    //http://foolabs/get/{name?}
     public function patientList($name = null) {
 
         if (!$name) {

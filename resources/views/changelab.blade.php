@@ -5,19 +5,22 @@
 <form method='GET'  class='form' action='/checklabs'>
     <fieldset>
         {{ csrf_field() }}
-        
-        <input type='text' name='a1c' value='{{ $lab_data->a1c }}'>
+
+        <input type='number' name='a1c' step="any" min="0" value='{{ $lab_data->a1c }}'>
         <label class='line'>AiC</label></br>
-        
-        <input type='text' name='a1c' value='{{ $lab_data->glucose }}'>
+
+        <input type='number' name='glucose' step="any" min="0" value='{{ $lab_data->glucose }}'>
         <label class='line'>Glucose</label></br>       
-        
-        <input type='text' name='hdl' value='{{ $lab_data->hdl }}'>
+
+        <input type='number' name='hdl' step="any" min="0" value='{{ $lab_data->hdl }}'>
         <label class='line'>HDL</label></br>   
-        
-        <input type='text' name='hdl' value='{{ $lab_data->ldl }}'>
+
+        <input type='number' name='ldl' step="any" min="0" value='{{ $lab_data->ldl }}'>
         <label class='line'>LDL</label></br>
 
+        <input type='number' name='triglicerides' step="any" min="0" value='{{ $lab_data->triglicerides }}'>
+        <label class='line'>Triglicerides</label></br>
+        
         <div id='gender-block'>
             Gender:
             <input type="radio" name='gender' value='Male' {{ (old('gender') == 'Male') ? 'checked' : '' }}>
@@ -25,9 +28,9 @@
             <input type="radio" name='gender' value='Female' {{ (old('gender') == 'Female') ? 'checked' : '' }}>
             <label>female</label>
         </div>
-        
- 
 
+        <input type="hidden" value="{{$lab_data->id}}" name="lab_id" />
+        <input type="hidden" value="{{$patient->id}}" name="pt_id" />
 
 
     </fieldset>
