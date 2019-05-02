@@ -1,0 +1,70 @@
+
+h2 {
+    color: red;
+    background-color: yellow;
+}
+
+html {
+    width: 30em;
+    margin-left: 5%;
+}
+
+fieldset {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+    background-color: lightgoldenrodyellow;
+    margin-top: 15px;
+}
+
+
+
+#gender-block, #height-block, #weight-block {
+    margin-top: .25em;
+    float:left;
+    clear: left;
+}
+
+
+footer {
+    margin-bottom: 1px;
+    padding-bottom: 1px;
+}
+
+
+form #alerts li.alert-danger {
+    display: block;
+    color: red;
+    background-color: yellow !important;
+    width:100%;
+}
+
+#alerts ul li{
+    font-size: 1.25em;
+    margin-top: 1em;
+    background-color: red;
+    padding: .5em;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 3px;
+}
+
+td a {
+    display:block;
+    width:100%;
+}
+
+td.click {
+    text-align: center;
+    background-color: lightcyan;
+}
+
+a:hover { 
+  background-color: yellow;
+}

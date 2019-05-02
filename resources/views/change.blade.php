@@ -4,6 +4,7 @@
 
     <head>
         <meta charset="utf-8">
+        <link href='/css/labs.css' type='text/css' rel='stylesheet'>
         <title>CHANGE</title>
     </head>
 
@@ -28,7 +29,7 @@
             @foreach($labs as $lab)
 
             <tr>
-                <td><a href="../changelab/{{$lab->id}}">{{$lab->id}}</a></td>
+                <td class="click"><a href="../changelab/{{$lab->id}}">{{$lab->id}}</a></td>
                 <td>{{$lab->a1c}}</td>
                 <td>{{$lab->glucose}}</td>
                 <td>{{$lab->hdl}}</td>
