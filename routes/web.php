@@ -19,6 +19,8 @@ Route::get('/', 'LabController@index');
 Route::get('/test/{title?}', 'LabController@test');
 Route::get('/get/{name?}','LabController@patientList');
 Route::get('/change/{id?}', 'LabController@change');
+Route::get('/changelab/{id?}', 'LabController@changelab');
+Route::get('/checklabs', 'LabController@checklabs');
 
 Route::get('/debug', function () {
 

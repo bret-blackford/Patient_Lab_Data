@@ -9,55 +9,58 @@ use App\Labs;
 class LabController extends Controller {
 
     public function index() {
-        return view('view');
+        return view('welcome');
     }
-    
-    public function change($pt_id = null) {
 
-        dump( 'now in LabController.change()');
-        if( !$pt_id ){
+    public function change($pt_id = null) {
+        //dump('now in LabController.change()');
+        if (!$pt_id) {
             dump('no ID submitted ');
-        }else {
-            dump( 'pt_id = [' . $pt_id . ']' );
-            $ptLabs = Labs::find($pt_id);
+        } else {
+            $ptLabs = Labs::where('pt_id', '=', $pt_id)->get();
             $ptInfo = Patient::find($pt_id);
-            dump( 'ptLabs = [' . $ptLabs . ']' );
-            dump( 'ptInfo = [' . $ptInfo . ']' );
-            return view('change')->with(['labs'=>$ptLabs, 'ptInfo'=>$ptInfo]);
+
+            return view('change')->with(['labs' => $ptLabs, 'ptInfo' => $ptInfo]);
         }
         return "ERROR in LabController.change()";
-    }
-
-    public function test($title = null) {
-        return view('test')->with(['title' => $title]);
     }
 
     public function show($title = null) {
         return view('show')->with(['title' => $title]);
     }
 
+    public function changelab($id = null) {
+        if (!$id) {
+            dump('NO ID PASSED IN');
+        }
+        $lab = Labs::find($id);
+        $pt = Patient::find($lab->pt_id);
+
+        return view('changelab')->with([
+                    'lab_data' => $lab,
+                    'patient' => $pt
+        ]);
+    }
+    
+    public function checklabs(Request $request){
+        dump('in LabController.checklab()');
+    }
+
     public function patientList($name = null) {
 
         if (!$name) {
-            dump('No matches found');
+            //dump('No matches found');
             $query = '%';
         } else {
             dump($name);
             $query = $name . '%';
         }
-        dump($query);
 
-        $results = Patient::where('last_name', 'like', $query)->get();
-        foreach($results as $patientX) {
-            dump($patientX->last_name . " | " . $patientX->first_name . " : " . 
-                    $patientX->birthdate . " : " . $patientX->gender);
-        }
-        //dump($results);
-        dump('done with patientList()');
+        $results = Patient::where('last_name', 'like', $query)->orderBy('last_name')->get();
+
         return view('patient')->with([
-            'patients' => $results
-                ]);
-        //return view('patient');
+                    'patients' => $results
+        ]);
     }
 
 }
