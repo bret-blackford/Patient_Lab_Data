@@ -6,8 +6,10 @@
             <file>file:/C:/xampp/htdocs/foolabs/resources/views/patient.blade.php</file>
             <file>file:/C:/xampp/htdocs/foolabs/app/Http/Controllers/LabController.php</file>
             <file>file:/C:/xampp/htdocs/foolabs/resources/views/change.blade.php</file>
+            <file>file:/C:/xampp/htdocs/foolabs/resources/views/newpatient.blade.php</file>
             <file>file:/C:/xampp/htdocs/foolabs/public/css/labs.css</file>
             <file>file:/C:/xampp/htdocs/foolabs/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/foolabs/resources/views/layouts/master.blade.php</file>
             <file>file:/C:/xampp/htdocs/foolabs/resources/views/changelab.blade.php</file>
         </group>
     </open-files>
