@@ -1,13 +1,37 @@
 
+body {
+    width: 90%;
+    height: 98%;
+    background-color: lemonchiffon;
+}
+
+header,footer{
+  float:left;
+  width:100%;
+  height: 5%;
+}
+
 h2 {
     color: red;
     background-color: yellow;
 }
 
-html {
-    width: 30em;
-    margin-left: 5%;
+h1 {
+    float:right;
+    color:blue;
+    background-color: red;
 }
+
+
+
+.HoME {
+    display: block;
+    width: 5em;
+    float:right;
+    background-color: black;
+    color:white;
+}
+
 
 fieldset {
     font-size: 1.4em;
@@ -27,11 +51,6 @@ fieldset {
     clear: left;
 }
 
-
-footer {
-    margin-bottom: 1px;
-    padding-bottom: 1px;
-}
 
 
 form #alerts li.alert-danger {

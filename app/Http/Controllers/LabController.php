@@ -10,6 +10,7 @@ class LabController extends Controller {
 
     //http://foolabs/
     public function index() {
+        //dump('now in LabController.index()');
         return view('welcome');
     }
 
@@ -28,7 +29,8 @@ class LabController extends Controller {
     }
 
     //http://foolabs/changelab/{id?}'
-    public function changelab($id = null) {
+    public function changeLab($id = null) {
+        //dump('now in LabController.changelab()');
         if (!$id) {
             dump('NO ID PASSED IN');
         }
@@ -41,10 +43,25 @@ class LabController extends Controller {
         ]);
     }
 
+    public function addLab($id = null) {
+        //dump('now in LabController.addlab()');
+        if (!$id) {
+            dump('NO ID PASSED IN');
+        }
+
+        $pt = Patient::find($id);
+        $lab = new Labs;
+
+        return view('addlab')->with([
+                    'lab_data' => $lab,
+                    'patient' => $pt
+        ]);
+    }
+
     //http://foolabs/checklabs
-    public function checklabs(Request $request) {
+    public function checkLabs(Request $request) {
+        //dump('now in LabController.checklabs()');
         $pt_id = $request->input('pt_id');
-        dump('pt_id [' . $pt_id . ']');
         $lab = Labs::find($request->input('lab_id'));
 
         $lab->a1c = $request->input('a1c');
@@ -58,9 +75,30 @@ class LabController extends Controller {
                     'id' => $pt_id
         ]);
     }
+    
+      //http://foolabs/checknewlabs
+    public function checkNewLabs(Request $request) {
+        //dump('now in LabController.checkNewLabs()');
+        $pt_id = $request->input('pt_id');
+        
+        $lab = new Labs;
+
+        $lab->a1c = $request->input('a1c');
+        $lab->glucose = $request->input('glucose');
+        $lab->ldl = $request->input('ldl');
+        $lab->hdl = $request->input('hdl');
+        $lab->triglicerides = $request->input('triglicerides');
+        $lab->pt_id = $pt_id;
+
+        $lab->save();
+        return redirect('/change/' . $pt_id)->with([
+                    'id' => $pt_id
+        ]);
+    }  
 
     //http://foolabs/get/{name?}
     public function patientList($name = null) {
+        //dump('now in LabController.patientList()');
 
         if (!$name) {
             //dump('No matches found');
@@ -76,10 +114,10 @@ class LabController extends Controller {
                     'patients' => $results
         ]);
     }
-    
-       public function chex(Request $request) {
-        dump( ' i am here in LabController::chex()');
-        dump( $request->all() );
+
+    //========================================
+    public function chexPatient(Request $request) {
+        //dump('now in LabController.chexPatient()');
 
         $request->validate([
             'last_name' => 'required|regex:/^[\pL\s\-]+$/u',
@@ -88,23 +126,21 @@ class LabController extends Controller {
             'gender' => 'required',
         ]);
 
-
         $last_name = $request->input('last_name', null);
         $first_name = $request->input('first_name', null);
         $dob = $request->input('dob', null);
         $gender = $request->input('gender', null);
- 
+
         $patient = new Patient;
         $patient->last_name = $request->input('last_name');
         $patient->first_name = $request->input('first_name');
-        $patient->bithdate = $request->input('dob');
+        $patient->bithdate = $dob;
         $patient->gender = $request->input('gender');
-        
-        dump($patient);
+
         $patient->save();
 
         return redirect('/get')->with([
-            'alert'=>'New patient added'
+                    'alert' => 'New patient added'
         ]);
     }
 

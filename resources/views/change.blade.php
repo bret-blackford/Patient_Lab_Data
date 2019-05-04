@@ -3,15 +3,16 @@
 @section('content')
 
 <div class='view'>
-    <h2>Lab Values for {{ $ptInfo->last_name }}, {{ $ptInfo->first_name }}</h2>
+    <h2>Lab Values for: [{{$ptInfo->id}}]{{ $ptInfo->last_name }}, {{ $ptInfo->first_name }}</h2>
 
     @if( count($labs) == 0 )
+        <button class="new_lab" onclick="window.location.href = '../addlab/{{$ptInfo->id}}';">Add Labs</button>
         No lab results found for patient
     @else
 
     click lab id to change, or click button to add new lab results 
 
-    <button class="new_lab" onclick="window.location.href = '../get';">New Labs</button>
+    <button class="new_lab" onclick="window.location.href = '../addlab/{{$ptInfo->id}}';">New Labs</button>
     <table class="patients">
         <tr>
             <th>lab id</th>
@@ -20,6 +21,8 @@
             <th>hdl</th>
             <th>ldl</th>
             <th>triglicerides</th>
+            <th>create date</th>
+            <th>change date</th>
         </tr>
 
         @foreach($labs as $lab)
@@ -31,6 +34,8 @@
             <td>{{$lab->hdl}}</td>
             <td>{{$lab->ldl}}</td>
             <td>{{$lab->triglicerides}}</td>
+            <td>{{$lab->created_at}}</td>
+            <td>{{$lab->updated_at}}</td>
         </tr>
         @endforeach
     </table>

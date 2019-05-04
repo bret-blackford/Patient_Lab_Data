@@ -1,0 +1,9 @@
+.grid-wrapper {
+    display: grid;
+    grid-template-row: 1fr 1fr 1fr 1fr;
+}
+
+.grid-wrapper > div {
+    padding: 2em;
+    background: yellow;
+}

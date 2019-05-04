@@ -15,12 +15,14 @@ Route::get('/', 'LabController@index');
 Route::get('/test/{title?}', 'LabController@test');
 Route::get('/get/{name?}', 'LabController@patientList');
 Route::get('/change/{id?}', 'LabController@change');
-Route::get('/changelab/{id?}', 'LabController@changelab');//to Form
-Route::get('/checklabs', 'LabController@checklabs');
+Route::get('/changelab/{id?}', 'LabController@changeLab');//to Form
+Route::get('/checklabs', 'LabController@checkLabs');
+Route::get('/checknewlabs', 'LabController@checkNewLabs');
 Route::get('/newpatient', function() {
     return view('newpatient');
 });//to Form
-Route::get('/checks', 'LabController@chex');
+Route::get('/addlab/{id?}', 'LabController@addLab');
+Route::get('/checkpatient', 'LabController@chexPatient');
 
 Route::get('/debug', function () {
 

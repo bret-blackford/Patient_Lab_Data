@@ -1,17 +1,11 @@
+@extends('layouts.master')
 
-<!doctype html>
-
-<html>    
-    <head>
-        <meta charset="utf-8">
-        <link href='/css/labs.css' type='text/css' rel='stylesheet'>
-        <title>NEW PATIENT</title>
-    </head>
+@section('content')
 
     <h1>Add a New Patient</h1>
     <p>All fields are required</p>
 
-    <form method='GET'  class='form' action='/checks'>
+    <form method='GET'  class='form' action='/checkpatient'>
         <fieldset>
             {{ csrf_field() }}
 
@@ -46,9 +40,4 @@
         @endif
     </div>
 
-</body>
-
-<footer> &copy; {{ date('Y') }} </footer>
-
-</html>
-
+@endsection

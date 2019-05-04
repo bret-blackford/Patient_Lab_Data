@@ -21,11 +21,11 @@
                 <td class="click"><a href="../change/{{$patient->id}}"> {{$patient->id}}</a></td>
                 <td>{{$patient->last_name}}</td>
                 <td>{{$patient->first_name}}</td>
-                <td>{{$patient->birthdate}}</td>
+                <td>{{$patient->bithdate}}</td>
                 <td>{{$patient->gender}}</td>
             </tr>
             @endforeach
         </table>
 
 </div>
-
+@endsection
