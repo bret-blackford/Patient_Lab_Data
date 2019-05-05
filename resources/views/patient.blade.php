@@ -9,7 +9,7 @@
         <button class="new_pt" onclick="window.location.href = '../newpatient';">Add Patient</button>
         <table class="patients">
             <tr>
-                <th>ID</th>
+                <th>ID No.</th>
                 <th>Last Name</th>
                 <th>First name</th>
                 <th>Birthdate</th>

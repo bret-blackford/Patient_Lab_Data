@@ -30,14 +30,5 @@
         <input type="submit" value='update' class='btn'>
     </form>
 
-    <div id="alerts">
-        @if( count($errors) > 0 ) 
-        <ul>
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-        @endif
-    </div>
 
 @endsection

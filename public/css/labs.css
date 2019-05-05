@@ -27,7 +27,7 @@ h1 {
 .HoME {
     display: block;
     width: 5em;
-    float:right;
+    float:left;
     background-color: black;
     color:white;
 }

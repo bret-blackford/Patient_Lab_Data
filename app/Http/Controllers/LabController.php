@@ -92,7 +92,8 @@ class LabController extends Controller {
 
         $lab->save();
         return redirect('/change/' . $pt_id)->with([
-                    'id' => $pt_id
+            'id' => $pt_id,
+            'alert' => 'New Lab added'
         ]);
     }  
 
@@ -136,11 +137,12 @@ class LabController extends Controller {
         $patient->first_name = $request->input('first_name');
         $patient->bithdate = $dob;
         $patient->gender = $request->input('gender');
+        $name = $last_name . ", " . $first_name;
 
         $patient->save();
 
         return redirect('/get')->with([
-                    'alert' => 'New patient added'
+                    'alert' => 'New patient added : ' . $name
         ]);
     }
 

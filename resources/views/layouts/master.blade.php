@@ -10,40 +10,41 @@
     </head>
 
     <body>
-        <div class="grid-wrapper"
-             <header>
-                @if(session('alert'))
-                <div class='alert'>{{session('alert')}}</div>
-                @endif
+        <div id="grid-wrapper">
+             <!--header-->
+             @if(session('alert'))
+             <div class='grid-alert'>{{session('alert')}}</div>
+            @endif
 
-                <div id="master_header">
-                    <a href="../"><div class="HoME">HoME</div></a> 
-                    <h1>Patient Lab Portal</h1> 
-                </div>
-            </header>
+            <div id="grid_header" class="grid">
+                <a href="../"><div class="HoME">HoME</div></a> 
+                <h1 id="header">Patient Lab Portal</h1> 
+            </div>
+            <!--/header-->
 
-            <section>
-                <div class="grid-section">
+            <!--section-->
+                <div id="grid-content" class="grid">
                     @yield('content')
                 </div>
-            </section>
+            <!--/section-->
 
 
-            <div id="alerts" class="grid-section">
+            <div id="grid-alerts" class="grid">
+                
                 @if( count($errors) > 0 ) 
                 <ul>
                     @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                    <li>{{ $error }}</li>
                     @endforeach
                 </ul>
                 @endif
             </div>
 
-            <footer class="footer">
-                <div class="grid-section">
+            <!--footer class="footer"-->
+                <div id="grid-footer" class="grid">
                     &copy; {{ date('Y') }}  mBret Blackford
                 </div>
-            </footer>
+            <!--/footer-->
         </div>   
     </body>
 </html>
