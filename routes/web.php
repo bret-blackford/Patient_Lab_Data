@@ -23,6 +23,8 @@ Route::get('/newpatient', function() {
 });//to Form
 Route::get('/addlab/{id?}', 'LabController@addLab');
 Route::get('/checkpatient', 'LabController@chexPatient');
+Route::get('/analyzelab/{id?}', 'LabController@analyzeLab');
+
 
 Route::get('/debug', function () {
 

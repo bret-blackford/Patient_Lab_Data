@@ -13,6 +13,7 @@
     <div class="description">click lab id to change, or click button to add new lab results </div>
 
     <button class="new_lab" onclick="window.location.href = '../addlab/{{$ptInfo->id}}';">New Labs</button>
+    <button class="lab_analysis" onclick="window.location.href = '../analyzelab/{{$ptInfo->id}}';">Analyze Latest Lab</button>
     <table class="patients">
         <tr>
             <th>lab id</th>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Patient;
 use App\Labs;
+use App\Reference;
 
 class LabController extends Controller {
 
@@ -75,12 +76,12 @@ class LabController extends Controller {
                     'id' => $pt_id
         ]);
     }
-    
-      //http://foolabs/checknewlabs
+
+    //http://foolabs/checknewlabs
     public function checkNewLabs(Request $request) {
         //dump('now in LabController.checkNewLabs()');
         $pt_id = $request->input('pt_id');
-        
+
         $lab = new Labs;
 
         $lab->a1c = $request->input('a1c');
@@ -92,10 +93,47 @@ class LabController extends Controller {
 
         $lab->save();
         return redirect('/change/' . $pt_id)->with([
-            'id' => $pt_id,
-            'alert' => 'New Lab added'
+                    'id' => $pt_id,
+                    'alert' => 'New Lab added'
         ]);
-    }  
+    }
+
+    public function analyzeLab($name_id = null) {
+        dump('now in LabController.analyzeLab()');
+        if (!$name_id) {
+            dump("ERROR in LabController.analyzeLab() - no name_id");
+        }
+        dump('name_id=[' . $name_id . "]");
+        $pt_lab = Labs::where('pt_id', '=', $name_id)->orderBy('id', 'desc')->first();
+        dump('pt_lab=[' . $pt_lab . "]");
+
+        $references = Reference::all();
+        $alerts = array();
+
+        foreach ($references as $lab_range) {
+            $lab_x = $lab_range->lab_test;
+            $lab_x_high = $lab_range->high;
+            $lab_x_low = $lab_range->low;
+            dump('lab_x=[' . $lab_x . "] high=[" . $lab_x_high . '] low=[' . $lab_x_low . ']');
+            $lab_value = $pt_lab->$lab_x;
+            if ($lab_value) {
+                if( $lab_value < $lab_x_low ){
+                    $low_error = $lab_x . ' is low ';
+                    array_push($alerts, $low_error);
+                }
+                if( $lab_value > $lab_x_high ){
+                    $high_error = $lab_x . " is high ";
+                    array_push($alerts, $high_error);
+                }             
+            }
+        }
+        if( count($alerts) > 0 ){
+            foreach ($alerts as $value) {
+                dump('ERROR : ' . $value . ' *** ');
+            }
+        }
+        dump(' == DONE == ');
+    }
 
     //http://foolabs/get/{name?}
     public function patientList($name = null) {
