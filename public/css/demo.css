@@ -104,6 +104,15 @@ td.click {
     background-color: lightcyan;
 }
 
+fieldset {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+    background-color: lightgoldenrodyellow;
+    margin-top: 15px;
+    max-width: 20em;
+    min-width: 13em;
+}
+
 a:hover { 
     background-color: yellow;
 }
@@ -127,6 +136,12 @@ a:hover {
     margin: 1px;
 }
 
+.lab_analysis {
+    float:left;
+    padding: 2px;
+    margin: 1px;
+}
+
 .description {
     float: left;
     clear: left;
@@ -134,10 +149,10 @@ a:hover {
 
 button {
     padding: 4px;
-    margin: 4px; 
+    margin: 6px; 
 }
 button:hover {
-    background-color: black;
+    background-color: yellow;
     color: red;
 }
 

@@ -10,7 +10,7 @@
         No lab results found for patient
     @else
 
-    <div class="description">click lab id to change, or click button to add new lab results </div>
+    <div class="description">click lab id to change, or click buttons to either add new lab results or analyze latest lab results</div>
 
     <button class="new_lab" onclick="window.location.href = '../addlab/{{$ptInfo->id}}';">New Labs</button>
     <button class="lab_analysis" onclick="window.location.href = '../analyzelab/{{$ptInfo->id}}';">Analyze Latest Lab</button>

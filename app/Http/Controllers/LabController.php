@@ -99,13 +99,12 @@ class LabController extends Controller {
     }
 
     public function analyzeLab($name_id = null) {
-        dump('now in LabController.analyzeLab()');
+        //dump('now in LabController.analyzeLab()');
         if (!$name_id) {
             dump("ERROR in LabController.analyzeLab() - no name_id");
         }
-        dump('name_id=[' . $name_id . "]");
+
         $pt_lab = Labs::where('pt_id', '=', $name_id)->orderBy('id', 'desc')->first();
-        dump('pt_lab=[' . $pt_lab . "]");
 
         $references = Reference::all();
         $alerts = array();
@@ -114,25 +113,30 @@ class LabController extends Controller {
             $lab_x = $lab_range->lab_test;
             $lab_x_high = $lab_range->high;
             $lab_x_low = $lab_range->low;
-            dump('lab_x=[' . $lab_x . "] high=[" . $lab_x_high . '] low=[' . $lab_x_low . ']');
             $lab_value = $pt_lab->$lab_x;
             if ($lab_value) {
-                if( $lab_value < $lab_x_low ){
+                if ($lab_value < $lab_x_low) {
                     $low_error = $lab_x . ' is low ';
                     array_push($alerts, $low_error);
                 }
-                if( $lab_value > $lab_x_high ){
+                if ($lab_value > $lab_x_high) {
                     $high_error = $lab_x . " is high ";
                     array_push($alerts, $high_error);
-                }             
+                }
             }
         }
-        if( count($alerts) > 0 ){
+        $alert_string = 'No Lab Issues Noted';
+        if (count($alerts) > 0) {
+            $alert_string = 'LAB RANGE ISSUES: ';
             foreach ($alerts as $value) {
-                dump('ERROR : ' . $value . ' *** ');
+                $alert_string = $alert_string . '[' . $value . ']';
             }
         }
-        dump(' == DONE == ');
+
+        return redirect('/change/' . $name_id)->with([
+                    'id' => $name_id,
+                    'alert' => $alert_string
+        ]);
     }
 
     //http://foolabs/get/{name?}
