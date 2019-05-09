@@ -92,6 +92,7 @@ form #alerts li.alert-danger {
 table, th, td {
     border: 1px solid black;
     padding: 3px;
+    text-align: center;
 }
 
 td a {
@@ -121,7 +122,7 @@ a:hover {
     float: left;
     clear:left;
     padding: 2px;
-    margin: 1px;
+    margin: 1em;;
 }
 
 .patients {
@@ -133,13 +134,13 @@ a:hover {
     float: left;
     clear: left;
     padding: 2px;
-    margin: 1px;
+    margin: 1em;
 }
 
 .lab_analysis {
     float:left;
     padding: 2px;
-    margin: 1px;
+    margin: 1em;
 }
 
 .description {
@@ -149,11 +150,12 @@ a:hover {
 
 button {
     padding: 4px;
-    margin: 6px; 
+    margin: 6px;
+    background-color: yellow;
 }
 button:hover {
-    background-color: yellow;
-    color: red;
+    background-color: gray;
+    color: white;
 }
 
 .btn:hover {

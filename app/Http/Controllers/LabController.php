@@ -116,11 +116,11 @@ class LabController extends Controller {
             $lab_value = $pt_lab->$lab_x;
             if ($lab_value) {
                 if ($lab_value < $lab_x_low) {
-                    $low_error = $lab_x . ' is low ';
+                    $low_error = $lab_x . ' is low : < ' . $lab_x_low;
                     array_push($alerts, $low_error);
                 }
                 if ($lab_value > $lab_x_high) {
-                    $high_error = $lab_x . " is high ";
+                    $high_error = $lab_x . " is high : > " . $lab_x_high;
                     array_push($alerts, $high_error);
                 }
             }

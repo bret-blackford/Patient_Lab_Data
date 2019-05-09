@@ -17,7 +17,7 @@ class ReferenceTableSeeder extends Seeder
             ['a1c',4.8,5.6],
             ['ldl',0,99],
             ['hdl',39,999],
-            ['triglycerides',0,150],
+            ['triglicerides',0,150],
         ];
         $count = count($ranges);
         

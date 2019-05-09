@@ -17,6 +17,7 @@ class PatientsTableSeeder extends Seeder {
             ['Mouse', 'Minnie', '1931-01-30', 'Female'],
             ['Adams', 'Quincy', '1767-07-11', 'Male'],
             ['Duck', 'Donald', '1934-01-01', 'Male'],
+            ['Tucker', 'Michelle', '1968-11-30', 'Female'],
         ];
 
         $count = count($patientArray);
