@@ -26,7 +26,7 @@
 + There's a one-to-one relationship between `labs` and `refernces`
 
 ## Outside resources
-*barryvdh/laravel-debugbar, which adds a useful debugging/info panel to the Laravel application. (Runs in DEV not PROD)
++ barryvdh/laravel-debugbar, which adds a useful debugging/info panel to the Laravel application. (Runs in DEV not PROD)*
 
 https://packagist.org/packages/barryvdh/laravel-debugbar*
 
