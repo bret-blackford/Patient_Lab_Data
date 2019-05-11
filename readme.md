@@ -27,6 +27,12 @@
 + There's a one-to-many relationship between `patients` and `labs`
 + There's a one-to-one relationship between `labs` and `references`
 
+*CRUD: ***C***reate, ***R***ead, ***U***pdate, ***D***elete operations*
++ The project does not have any deletions, assumin all data enetered would need to be maintained for record retention purposes (although might not be able to be displayed).
++ ***C***reate - new Patient and Lab records can be created
++ ***R***ead - Patient and Lab records can be read/reviewed
++ ***U***pdate - Patient and Lab records can be modified
+
 ## Outside resources
 *barryvdh/laravel-debugbar, which adds a useful debugging/info panel to the Laravel application. (Runs in DEV not PROD)*
 
